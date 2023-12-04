@@ -1,6 +1,6 @@
-require("./connections/connections");
 const express = require("express");
 const app = express();
+const db = require("./connections/connections");
 app.use("/mediaFiles", express.static("mediaFiles"));
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
