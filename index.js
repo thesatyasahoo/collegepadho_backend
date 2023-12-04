@@ -1,14 +1,18 @@
 const express = require("express");
 const app = express();
 const db = require("./connections/connections");
-app.use("/mediaFiles", express.static("mediaFiles"));
+const router = require("./routers/mainRouter");
 const cookieParser = require("cookie-parser");
-app.use(cookieParser());
 const cors = require("cors");
+
+app.use("/mediaFiles", express.static("mediaFiles"));
+
+app.use(cookieParser());
+
 app.use(cors());
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
-const router = require("./routers/mainRouter");
+
 app.use(router);
 const PORT = 9000;
 
